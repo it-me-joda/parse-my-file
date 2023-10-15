@@ -1,6 +1,6 @@
 {
   "name": "parse-my-file",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Give your file and a simple configuration to Parse My File and let it do all of the work for you",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -8,6 +8,7 @@
   "author": "Joseph Bartley <josephdanielbartley@gmail.com>",
   "license": "ISC",
   "private": false,
+  "keywords": [ "parse", "parser", "csv", "tsv", "txt" ],
   "scripts": {
     "dev": "ts-node src/index.ts",
     "test": "ts-node test/test.ts",
