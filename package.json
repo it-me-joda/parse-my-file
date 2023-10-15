@@ -1,0 +1,26 @@
+{
+  "name": "parse-my-file",
+  "version": "1.0.0",
+  "description": "Give your file and a simple configuration to Parse My File and let it do all of the work for you",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": "git@github.com:josephbartley/parse-my-file.git",
+  "author": "Joseph Bartley <josephdanielbartley@gmail.com>",
+  "license": "ISC",
+  "private": false,
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "test": "ts-node test/test.ts",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prettier": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint src/**/*.ts"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.8.4",
+    "ts-node": "^10.9.1"
+  }
+}
