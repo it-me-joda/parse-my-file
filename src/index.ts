@@ -14,13 +14,10 @@ export function parseMyFile(filepath: string, config: PmfConfig) {
     const lines = fileString.split('\n')
     const header = lines[0]
     const headerSegments = header.split(config.delimiter).map((w: string) => w.trim())
-    const parseKey = {} as { [key: string]: number }
-
+    let parseKey = {} as { [key: string]: number }
+ 
     if (config.shape) {
-        const entries = Object.entries(config.shape)
-        for (let entry of entries) {
-            parseKey[entry[0]] = headerSegments.indexOf(entry[1])
-        }
+        parseKey = buildParseKey(parseKey, config.shape, headerSegments)
     } else {
         headerSegments.forEach((hs, i) => {
             parseKey[hs] = i
@@ -45,8 +42,24 @@ function parseLine(lineString: string, parseKey: any, config: PmfConfig) {
 
     const entries = Object.entries(parseKey)
     for (let entry of entries) {
-        result[entry[0]] = lineSegments[entry[1] as number].trim()
+        if (typeof(entry[1]) === 'object') {
+            result[entry[0]] = parseLine(lineString, entry[1], config)
+        } else {
+            result[entry[0]] = lineSegments[entry[1] as number].trim()
+        }
     }
 
     return result
+}
+
+function buildParseKey(parseKey: any, shape: object, headerSegments: string[]) {
+    const entries = Object.entries(shape!)
+    for (let entry of entries) {
+        if (typeof(entry[1]) === 'object') {
+            parseKey[entry[0]] = buildParseKey({}, entry[1], headerSegments)
+        } else {
+            parseKey[entry[0]] = headerSegments.indexOf(entry[1])
+        }
+    }
+    return parseKey
 }
