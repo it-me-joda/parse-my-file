@@ -1,6 +1,6 @@
 {
   "name": "parse-my-file",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Give your file and a simple configuration to Parse My File and let it do all of the work for you",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
