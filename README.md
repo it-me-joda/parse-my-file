@@ -12,8 +12,10 @@
     shape: {
         id: 'ID',
         name: 'NAME',
-        price: 'PRICE',
-        quantity: 'QTY'
+        pricing: {
+            price: 'PRICE',
+            quantity: 'QTY'
+        }
     }
 }
 ```
@@ -33,13 +35,15 @@ const result = parseMyFile('test.txt', {
     shape: {
         id: 'ID',
         name: 'NAME',
-        price: 'PRICE',
-        quantity: 'QTY',
+        pricing: {
+            price: 'PRICE',
+            quantity: 'QTY',
+        }
     }
 })
 
 console.log('result', result)
-// [ { id: '1', name: 'A THING', price '$0.99', quantity: '5' } ]
+// [ { id: '1', name: 'A THING', pricing: { price '$0.99', quantity: '5' } } ]
 
 // Alternatively, if you choose to not provide a shape
 // it will default to using the header value as the keys
