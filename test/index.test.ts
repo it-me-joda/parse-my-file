@@ -41,4 +41,31 @@ describe('parseMyFile', () => {
             ])
         })
     })
+
+    describe('when a complex shape is provided', () => {
+        it('should parse my file', () => {
+            const result = parseMyFile(path.join(__dirname, 'data/basic.txt'), {
+                delimiter: ',',
+                shape: {
+                    id: 'ID',
+                    name: 'NAME',
+                    pricing: {
+                        price: 'PRICE',
+                        quantity: 'QTY',
+                    }
+                },
+            })
+
+            expect(result).toStrictEqual([
+                {
+                    id: '1',
+                    name: 'A THING',
+                    pricing: {
+                        price: '$0.99',
+                        quantity: '5'
+                    }
+                }
+            ])
+        })
+    })
 })
