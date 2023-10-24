@@ -7,7 +7,7 @@
     // the character that separates columns
     delimiter: ',',
     // OPTIONAL: the javascript object shape to get from each row
-    //// the value of each key is the header value of each column 
+    //// the value of each key is the header value of each column
     //// if not provided, a basic shape will be provided for you
     shape: {
         id: 'ID',

@@ -48,7 +48,6 @@ function buildParseKey<T, K>(
 ): K {
 	for (const key in shape) {
 		const value = shape[key]
-		console.log(key, value)
 		if (typeof value === 'object') {
 			Object.defineProperty(parseKey, key, {
 				value: buildParseKey({}, value, headerSegments),
@@ -64,7 +63,6 @@ function buildParseKey<T, K>(
 				'Parse-My-file shape does not accept shape values that are not an object or a string',
 			)
 		}
-		console.log(parseKey)
 	}
 	return parseKey
 }
@@ -76,7 +74,6 @@ function parseLine<T, K>(
 ): K {
 	const lineSegments = lineString.split(config.delimiter)
 
-	console.log('parseLine', parseKey)
 	const result: K = Object.assign({}, parseKey)
 	for (const key in parseKey) {
 		const value = parseKey[key]
